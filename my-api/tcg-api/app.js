@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const users = require("./modules/users");
-const port = 3000;
+const port = 3001;
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.post("/register", users.RegisterUser);
+app.get("/login", users.Login);
 
 
 // Démarrer le serveur

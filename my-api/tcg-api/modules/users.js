@@ -31,4 +31,34 @@ function RegisterUser(req, res) {
   return res.json({ message : users });
 }
 
-module.exports = { RegisterUser };
+
+function Login(req, res) {
+  if (!req.body) {
+    res.status(400).json({ message: "Erreur : Aucune données" });
+    return;
+  }
+
+  var TokenGenerator = require('token-generator' )({
+        salt: 'le token',
+        timestampMap: 'abcdefghij', // 10 chars array for obfuscation proposes
+    });
+
+  let username = req.body.username;
+  let password = req.body.password;
+  let users = [];
+  var token = TokenGenerator.generate();  
+
+  // Recuperation fichier JSON
+  const data = fs.readFileSync("./my-api/tcg-api/data/users.json");
+  users = JSON.parse(data);
+
+  // Verification des identifiants
+  const user = users.find(u => u.username === username && u.password === password);
+  if (!user) {
+    return res.status(401).json({ message : "Erreur : Identifiants invalides" });
+  }
+
+  return res.json({ message : "Athantification reussi", data: token });
+
+}
+module.exports = { RegisterUser, Login };
