@@ -22,6 +22,7 @@ function RegisterUser(req, res) {
   const nouvelUser = new UserClass(users.length + 1, username, password);
   users.push(nouvelUser);
 
+  // Enregistrer la nouvelle liste
   fs.writeFileSync("./my-api/tcg-api/data/users.json", JSON.stringify(users));
   
 
