@@ -19,7 +19,6 @@ app.get("/user", users.User);
 app.get("/cards", cards.GetAllCards);
 app.put("/booster", cards.OpenBooster);
 
-
 // Démarrer le serveur
 app.listen(port, () => {
   console.log(`Serveur démarré sur http://localhost:${port}`);

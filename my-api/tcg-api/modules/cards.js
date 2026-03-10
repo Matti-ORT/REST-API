@@ -1,15 +1,14 @@
 const fs = require("fs");
 
-// Fonction pour récupérer toutes les cartes
-function GetAllCards(req,res) {
-    let cards = [];
+// retourne toutes les cartes
+function GetAllCards(req, res) {
+  let cards = [];
 
-    const data = fs.readFileSync("tcg-api/data/cards.json");
-    cards = JSON.parse(data);
+  const data = fs.readFileSync("tcg-api/data/cards.json");
+  cards = JSON.parse(data);
 
-    return res.json({ message: cards });
+  return res.json({ message: cards });
 }
-
 
 function OpenBooster(req, res) {
   if (!req.body) {
@@ -17,26 +16,23 @@ function OpenBooster(req, res) {
     return;
   }
 
-  // Recuperation fichier JSON des utilisateurs
+  // lire users et trouver celui du token
   const dataUser = fs.readFileSync("tcg-api/data/users.json");
   users = JSON.parse(dataUser);
 
-  // On cherche l'utilisateur ayant ce token
   const user = users.find((u) => u.token === req.body.token);
   if (!user) {
     return res.status(401).json({ message: "Erreur : Token invalide" });
   }
 
-  // --- Délai entre boosters / delay between boosters ---
+  //Delais
   const now = Date.now();
   const delay = 5 * 60 * 1000; // 5 minutes en millisecondes
 
-  // si l'utilisateur a déjà ouvert un booster, vérifier le délai
+  // si l'utilisateur a deja ouvert un booster on verifie le délai
   if (user.lastBooster && now - user.lastBooster < delay) {
-    const remaining = Math.ceil((delay - (now - user.lastBooster)) / 1000);
-    // message simple en français/anglais minimal
     return res.status(429).json({
-      message: `Veuillez attendre encore ${remaining} secondes avant d'ouvrir un nouveau booster / please wait ${remaining} seconds before opening another booster`,
+      message: ` Attendez encore avant d'ouvrir un nouveau booster`,
     });
   }
 
@@ -55,7 +51,10 @@ function OpenBooster(req, res) {
     boosterCards.push(cards[randomIndex]);
   }
 
-  return res.json({ message: "Booster ouvert avec succès", data: boosterCards });
+  return res.json({
+    message: "Booster ouvert avec succès",
+    data: boosterCards,
+  });
 }
 
-module.exports = {GetAllCards, OpenBooster};
+module.exports = { GetAllCards, OpenBooster };
