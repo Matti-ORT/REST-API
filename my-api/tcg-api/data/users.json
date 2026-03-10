@@ -1,1 +1,83 @@
-[{"id":1,"username":"Matti","password":"ma123","collection":[]},{"id":2,"username":"mattiTests","password":"123d","collection":[]},{"id":3,"username":"mattiTest","password":"123d","collection":[]},{"id":4,"username":"mattiTestssq","password":"123d","collection":[]},{"id":5,"username":"mattiTestssq","password":"123d","collection":[]},{"id":6,"username":"mattiTestssqs","password":"123d","collection":[]}]
+[
+  {
+    "id": 1,
+    "username": "Matti",
+    "password": "ma123",
+    "collection": [],
+    "token": "ebfdbhhdbdjhfd",
+    "lastBooster": 1773139005959
+  },
+  {
+    "id": 2,
+    "username": "mattiTests",
+    "password": "123d",
+    "collection": [],
+    "token": null
+  },
+  {
+    "id": 3,
+    "username": "mattiTest",
+    "password": "123d",
+    "collection": [],
+    "token": null
+  },
+  {
+    "id": 4,
+    "username": "mattiTestssq",
+    "password": "123d",
+    "collection": [],
+    "token": null
+  },
+  {
+    "id": 5,
+    "username": "mattiTestssq",
+    "password": "123d",
+    "collection": [],
+    "token": null
+  },
+  {
+    "id": 6,
+    "username": "mattiTestssqs",
+    "password": "123d",
+    "collection": [],
+    "token": null
+  },
+  {
+    "id": 7,
+    "username": "Matti",
+    "password": "ma123",
+    "collection": [
+      25,
+      1,
+      25,
+      4,
+      1,
+      1,
+      150,
+      1,
+      4,
+      7,
+      25,
+      4,
+      25,
+      150,
+      7,
+      4,
+      7,
+      1,
+      1,
+      4,
+      4,
+      4,
+      4,
+      4,
+      25,
+      7,
+      7,
+      4,
+      1,
+      25
+    ],
+    "token": null
+  }
+]
